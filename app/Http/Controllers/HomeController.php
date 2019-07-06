@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\CupCake;
+use App\Category;
 use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
@@ -25,7 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.add_product');
+        $categories = Category::all();
+        return view('admin.add_product',compact('categories'));
     }
 
     public function store(Request $request){
@@ -42,7 +44,7 @@ class HomeController extends Controller
         $cupcake = new CupCake();
         $cupcake->title = $request->title;
         $cupcake->price = $request->price * 100;
-        $cupcake->category = $request->category;
+        $cupcake->category_id = $request->category_id;
         $cupcake->image_url = $image_url ? $image_url : 'noimage.jpg';
         $cupcake->user_id = auth()->user() ? auth()->user()->id : null;
         $cupcake->save();

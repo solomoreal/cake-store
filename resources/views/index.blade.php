@@ -36,7 +36,7 @@
           <!-- cart buttons -->
           <div class="cart-buttons-container mt-3 d-flex justify-content-between">
           <a href="{{route('emptyCart')}}" id="clear-cart" class="btn btn-outline-secondary btn-black text-uppercase">clear cart</a>
-            <a href="#" class="btn btn-outline-secondary text-uppercase btn-pink">checkout</a>
+          <a href="{{route('checkout')}}" class="btn btn-outline-secondary text-uppercase btn-pink">checkout</a>
           </div>
           @else
           <div>
@@ -69,7 +69,7 @@
                 </div>
                 <div class="col-10 mx-auto col-lg-6 col-sm-6 my-5">
                     <div class="about-img__container">
-                        <img src="img/sweets-1.jpeg" class="img-fluid" alt="">
+                        <img src="{{asset('img/sweets-1.jpeg')}}" class="img-fluid" alt="">
                     </div>
                 </div>
             </div>
@@ -86,17 +86,17 @@
                     <h1 class="text-capitalize">our <strong class="banner-title">store</strong></h1>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" id="cakes">
                 <div class="col-lg-8 mx-auto d-flex justify-content-around my-2 sortBtn flex-wrap">
-                    <a href="" class="btn btn-outline-secondary btn-black text-uppercase filter-btn-btn m-2"
+                <a href="{{route('index')}}#cakes" class="btn btn-outline-secondary btn-black text-uppercase filter-btn-btn m-2"
                         data-filter="all">all</a>
-                    <a href="" class="btn btn-outline-secondary btn-black text-uppercase filter-btn-btn m-2"
+                    <a href="{{route('category',['category' => 'Cakes'] )}}#cakes" class="btn btn-outline-secondary btn-black text-uppercase filter-btn-btn m-2"
                         data-filter="cakes">cakes</a>
-                    <a href="" class="btn btn-outline-secondary btn-black text-uppercase filter-btn-btn m-2"
+                    <a href="{{route('category',['category' => 'Cupcakes'] )}}#cakes" class="btn btn-outline-secondary btn-black text-uppercase filter-btn-btn m-2"
                         data-filter="cupcakes">cupcakes</a>
-                    <a href="" class="btn btn-outline-secondary btn-black text-uppercase filter-btn-btn m-2"
+                    <a href="{{route('category',['category' => 'Sweets'] )}}#cakes" class="btn btn-outline-secondary btn-black text-uppercase filter-btn-btn m-2"
                         data-filter="sweets">sweets</a>
-                    <a href="" class="btn btn-outline-secondary btn-black text-uppercase filter-btn-btn m-2"
+                    <a href="{{route('category',['category' => 'Doughnuts'] )}}#cakes" class="btn btn-outline-secondary btn-black text-uppercase filter-btn-btn m-2"
                         data-filter="doughnuts">doughnuts</a>
                 </div>
             </div>
@@ -124,7 +124,7 @@
                 <div class="col-6 col-sm-6 col-lg-4 mx-auto my-3 stroe-item sweets" data-item="sweets">
                     <div class="card">
                         <div class="img-container">
-                        <img src="{{Storage::url($cupcake->image_url)}}" class="card-img-top store-img" alt="">
+                        <img src="{{asset(Storage::url($cupcake->image_url))}}" class="card-img-top store-img" alt="">
                             <span class="store-item-icon">
                             <a href="{{route('addToCart',['id' => $cupcake->id])}}"><i class="fas fa-shopping-cart"></i></a>
                             </span>
